@@ -10,10 +10,17 @@ def h(X, theta):
     Returns
     -------
     h: [float] 
-        the computed function h(theta) of each observation
+        m x 1 array of the computed function h(theta) of each observation
     '''
 
     return X @ theta 
+
+def residuals(X, y, theta):
+    return h(X, theta) - y
+
+def sum_of_squared_residuals(X, y, theta):
+    res = residuals(X, y, theta)
+    return (res.T @ res)[0][0]
 
 def compute_cost(X, y, theta):
     '''
@@ -24,7 +31,7 @@ def compute_cost(X, y, theta):
     y: [float] 
         m x 1 array of values of the output variable
     theta: [float] 
-        array of coeficients
+        n x 1 array of coeficients
 
     Returns
     -------
@@ -33,5 +40,5 @@ def compute_cost(X, y, theta):
     '''
 
     m = y.shape[0]
-    residuals = h(X, theta) - y
-    return (1 / (2 * m))*(residuals.T @ residuals)[0][0]
+    ssr = sum_of_squared_residuals(X, y, theta)
+    return (1 / (2 * m)) * ssr

@@ -1,0 +1,22 @@
+matplotlib==3.4.3
+  - cycler [required: >=0.10, installed: 0.10.0]
+    - six [required: Any, installed: 1.16.0]
+  - kiwisolver [required: >=1.0.1, installed: 1.3.2]
+  - numpy [required: >=1.16, installed: 1.21.3]
+  - pillow [required: >=6.2.0, installed: 8.4.0]
+  - pyparsing [required: >=2.2.1, installed: 2.4.7]
+  - python-dateutil [required: >=2.7, installed: 2.8.2]
+    - six [required: >=1.5, installed: 1.16.0]
+pipdeptree==2.2.0
+  - pip [required: >=6.0.0, installed: 20.1.1]
+pkg-resources==0.0.0
+pytest==6.2.5
+  - attrs [required: >=19.2.0, installed: 21.2.0]
+  - iniconfig [required: Any, installed: 1.1.1]
+  - packaging [required: Any, installed: 21.0]
+    - pyparsing [required: >=2.0.2, installed: 2.4.7]
+  - pluggy [required: >=0.12,<2.0, installed: 1.0.0]
+  - py [required: >=1.8.2, installed: 1.10.0]
+  - toml [required: Any, installed: 0.10.2]
+setuptools==44.0.0
+wheel==0.34.2
