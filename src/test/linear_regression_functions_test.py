@@ -61,3 +61,15 @@ def test_cost_function():
     result = compute_cost(X, y, theta)
 
     assert result == 547.25 
+
+def test_gradient():
+
+    result = gradient(X, y, theta)
+
+    assert np.array_equal(
+        result,
+        np.array([
+            [613],
+            [513]
+        ])
+    )
