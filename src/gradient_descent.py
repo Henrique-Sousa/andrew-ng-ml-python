@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from linear_regression import * 
-import load_data
+import data_preprocessing
 from matplotlib.pyplot import figure
 
-(X, y) = load_data.load()
+(X, y) = data_preprocessing.load()
+X = data_preprocessing.with_leading_ones(X)
 
 iterations = 1500
 alpha = 0.01

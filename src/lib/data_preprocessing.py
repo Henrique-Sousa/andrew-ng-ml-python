@@ -18,7 +18,11 @@ def load():
     X = X.reshape([m, 1])
     y = y.reshape([m, 1])
 
-    ones = np.ones([m, 1])
-    X = np.concatenate([ones, X], axis=1)
-
     return (X, y)
+
+
+def with_leading_ones(X):
+    m = X.shape[0]
+    ones = np.ones([m, 1])
+    new_X = np.concatenate([ones, X], axis=1)
+    return new_X

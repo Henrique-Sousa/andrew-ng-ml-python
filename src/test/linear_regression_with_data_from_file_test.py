@@ -1,9 +1,10 @@
 import numpy as np
 from linear_regression import *
 import pytest
-import load_data
+import data_preprocessing
 
-(X, y) = load_data.load()
+(X, y) = data_preprocessing.load()
+X = data_preprocessing.with_leading_ones(X)
 
 def test_cost_function_with_zeros_as_theta():
 
