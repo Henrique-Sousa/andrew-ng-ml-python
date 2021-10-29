@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import data_preprocessing
 import linear_regression
 
-(X, y) = data_preprocessing.load('ex1data2.txt')
+data = data_preprocessing.load_data('ex1data2.txt')
+(X, y) = data_preprocessing.separate_X_and_y(data)
 (X, mu, sigma) = data_preprocessing.feature_normalize(X)
 X = data_preprocessing.with_leading_ones(X)
 

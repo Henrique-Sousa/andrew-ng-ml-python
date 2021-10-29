@@ -3,7 +3,8 @@ from linear_regression import *
 import pytest
 import data_preprocessing
 
-(X, y) = data_preprocessing.load('ex1data1.txt')
+data = data_preprocessing.load_data('ex1data1.txt')
+(X, y) = data_preprocessing.separate_X_and_y(data)
 X = data_preprocessing.with_leading_ones(X)
 
 def test_cost_function_with_zeros_as_theta():

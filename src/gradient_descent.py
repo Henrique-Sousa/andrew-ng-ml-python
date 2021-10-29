@@ -4,7 +4,8 @@ from linear_regression import *
 import data_preprocessing
 from matplotlib.pyplot import figure
 
-(X, y) = data_preprocessing.load('ex1data1.txt')
+data = data_preprocessing.load_data('ex1data1.txt')
+(X, y) = data_preprocessing.separate_X_and_y(data)
 X = data_preprocessing.with_leading_ones(X)
 
 iterations = 1500

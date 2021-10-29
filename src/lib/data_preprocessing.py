@@ -1,7 +1,7 @@
 import numpy as np
 import os
 
-def load(file):
+def load_data(file):
     current_file_path = os.path.abspath(__file__)
     current_dir = os.path.dirname(current_file_path)
     local_data_path = os.path.join('data', file); 
@@ -9,6 +9,10 @@ def load(file):
     data_path = os.path.join(src_dir, local_data_path)
 
     data = np.genfromtxt(data_path, delimiter=',') 
+
+    return data
+
+def separate_X_and_y(data):
 
     m = data.shape[0]
     n = data.shape[1]
