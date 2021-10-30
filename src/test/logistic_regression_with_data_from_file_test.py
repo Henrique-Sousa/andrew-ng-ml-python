@@ -12,11 +12,11 @@ initial_theta = np.zeros([n, 1])
 test_theta = np.array([[-24], [0.2], [0.2]])
 
 def test_cost_with_zeros_theta():
-    (cost, grad) = cost_function(initial_theta, X, y)
+    cost = cost_function(initial_theta, X, y)
     assert cost == pytest.approx(0.693, 0.01)
 
 def test_gradient_with_zeros_theta():
-    (cost, grad) = cost_function(initial_theta, X, y)
+    grad = gradient(initial_theta, X, y)
     assert np.allclose(
         grad,
         np.array([
@@ -25,11 +25,11 @@ def test_gradient_with_zeros_theta():
             [-11.2628]]), atol=0.001)
     
 def test_cost_with_test_theta():
-    (cost, grad) = cost_function(test_theta, X, y)
+    cost = cost_function(test_theta, X, y)
     assert cost == pytest.approx(0.218, 0.01)
 
 def test_gradient_with_test_theta():
-    (cost, grad) = cost_function(test_theta, X, y)
+    grad = gradient(test_theta, X, y)
     assert np.allclose(
         grad,
         np.array([
