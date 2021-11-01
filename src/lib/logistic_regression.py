@@ -49,3 +49,6 @@ def fminunc(initial_theta, X, y, maxiter):
         jac = True, 
         options = {'maxiter': maxiter})
     return (result.x.reshape(3, 1), result.fun)
+
+def predict(theta, X):
+    return (sigmoid(X @ theta) > 0.5).astype(np.int8)

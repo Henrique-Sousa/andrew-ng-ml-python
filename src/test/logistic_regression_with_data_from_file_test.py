@@ -56,3 +56,5 @@ def test_fminunc():
             [-25.161],
             [0.206],
             [0.201]]), atol=0.001)
+    prob = sigmoid(np.array([1, 45, 85]) @ theta)
+    assert prob == pytest.approx(0.775, 0.002)
