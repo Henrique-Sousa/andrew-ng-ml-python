@@ -36,3 +36,23 @@ def test_gradient_with_test_theta():
         [0.043],
         [2.566],
         [2.647]]), atol=0.001)
+
+def test_fit():
+    (theta, cost) = fit(initial_theta, X, y, maxiter = 400)
+    assert cost == pytest.approx(0.203, 0.03)
+    assert np.allclose(
+        theta,
+        np.array([
+            [-25.161],
+            [0.206],
+            [0.201]]), atol=0.001)
+
+def test_fminunc():
+    (theta, cost) = fminunc(initial_theta, X, y, maxiter = 400)
+    assert cost == pytest.approx(0.203, 0.03)
+    assert np.allclose(
+        theta,
+        np.array([
+            [-25.161],
+            [0.206],
+            [0.201]]), atol=0.001)

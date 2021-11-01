@@ -18,5 +18,7 @@ pytest==6.2.5
   - pluggy [required: >=0.12,<2.0, installed: 1.0.0]
   - py [required: >=1.8.2, installed: 1.10.0]
   - toml [required: Any, installed: 0.10.2]
+scipy==1.7.1
+  - numpy [required: >=1.16.5,<1.23.0, installed: 1.21.3]
 setuptools==44.0.0
 wheel==0.34.2
