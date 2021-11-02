@@ -55,12 +55,7 @@ def predict(theta, X):
 
 def cost_function_with_regularization(theta, X, y, lbda):
     m = y.shape[0]
-    J = cost_function(theta, X, y) + (lbda / 2 * m) * (theta.T @ theta)
-    grad_0 = gradient(
-        theta[0].reshape([1, 1]),
-        X[:, 0].reshape([m, 1]), y) 
-    grad_1_to_n = gradient(theta[1:], X[:, 1:], y) + (lbda / m) * theta[1:]
-    grad = np.block([
-        [grad_0],
-        [grad_1_to_n]])
+    J = cost_function(theta, X, y) + (lbda / (2 * m)) * (theta[1:].T @ theta[1:]).item()
+    grad = gradient(theta, X, y)
+    grad[1:] += (lbda / m) * theta[1:]
     return J, grad
