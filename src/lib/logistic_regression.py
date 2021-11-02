@@ -35,7 +35,7 @@ def fit(initial_theta, X, y, maxiter):
         method = 'BFGS',
         jac = lambda t, X, y: np.ndarray.flatten(gradient(t.reshape(n), X, y)),
         options = {'maxiter': maxiter})
-    return (result.x.reshape(3, 1), result.fun)
+    return (result.x.reshape(n, 1), result.fun)
 
 def fminunc(initial_theta, X, y, maxiter):
     m, n = X.shape
@@ -48,7 +48,7 @@ def fminunc(initial_theta, X, y, maxiter):
         method = 'BFGS',
         jac = True, 
         options = {'maxiter': maxiter})
-    return (result.x.reshape(3, 1), result.fun)
+    return (result.x.reshape(n, 1), result.fun)
 
 def predict(theta, X):
     return (sigmoid(X @ theta) > 0.5).astype(np.int8)
@@ -59,3 +59,16 @@ def cost_function_with_regularization(theta, X, y, lbda):
     grad = gradient(theta, X, y)
     grad[1:] += (lbda / m) * theta[1:]
     return J, grad
+
+def fit_with_regularization(initial_theta, X, y, maxiter, lbda):
+    m, n = X.shape
+    y = y.reshape(m)
+    initial_theta = initial_theta.reshape(n)
+    result = minimize(
+        fun = cost_function_with_regularization,
+        x0 = initial_theta,
+        args = (X, y, lbda),
+        method = 'BFGS',
+        jac = True, 
+        options = {'maxiter': maxiter})
+    return (result.x.reshape(n, 1), result.fun)
