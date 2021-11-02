@@ -36,3 +36,13 @@ def feature_normalize(X):
     sigma = X.std(axis=0)
     X_norm = (X - mu) / sigma
     return (X_norm, mu, sigma)
+
+def map_feature(X1, X2, degree):
+    m = X1.shape[0]
+    out = np.ones([m, 1])
+    X1 = X1.reshape([m, 1])
+    X2 = X2.reshape([m, 1])
+    for i in range(1, degree + 1):
+        for j in range(0, i + 1):
+            out = np.concatenate([out, (X1**(i-j)) * (X2**j)], axis=1)
+    return out
