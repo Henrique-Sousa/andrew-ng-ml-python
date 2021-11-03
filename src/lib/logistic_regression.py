@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.optimize import * 
+from data_preprocessing import *
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
@@ -72,3 +73,23 @@ def fit_with_regularization(initial_theta, X, y, maxiter, lbda):
         jac = True, 
         options = {'maxiter': maxiter})
     return (result.x.reshape(n, 1), result.fun)
+
+def one_vs_all(X, y, num_labels, lbda):
+    m, n = X.shape
+    labels = np.unique(y)
+    initial_theta = np.zeros([n + 1, 1])
+    X = with_leading_ones(X)
+    all_theta = np.zeros([num_labels, n + 1])
+    for i in range(0, num_labels):
+        y_i = (y == labels[i]).astype(np.int8)
+        theta, _ = fit_with_regularization(initial_theta, X, y_i, 400, lbda) 
+        print(f'Training regularized logistic regression classifier for label {i}')
+        all_theta[i, :] = theta.reshape(n + 1)
+    return all_theta
+
+def predict_one_vs_all(all_theta, X):
+    m = X.shape[0]
+    num_labels = all_theta.shape[0]
+    X = with_leading_ones(X)
+    probs = sigmoid(X @ all_theta.T)
+    return 1 + np.argmax(probs, axis=1)
