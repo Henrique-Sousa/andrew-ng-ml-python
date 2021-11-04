@@ -4,7 +4,7 @@ import os
 def load_data(file):
     current_file_path = os.path.abspath(__file__)
     current_dir = os.path.dirname(current_file_path)
-    local_data_path = os.path.join('data', file); 
+    local_data_path = os.path.join('data', file)
     src_dir = os.path.join(current_dir, '..')
     data_path = os.path.join(src_dir, local_data_path)
 

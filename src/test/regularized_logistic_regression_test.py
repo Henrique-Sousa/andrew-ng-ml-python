@@ -29,7 +29,7 @@ def test_grad_with_regularization_theta_zeros_lambda_1():
             [0.0115]]), atol=0.0001)
 
 def test_grad_with_regularization_test_theta__lambda_10():
-    cost, grad = cost_function_with_regularization(test_theta, X, y, 10);
+    cost, grad = cost_function_with_regularization(test_theta, X, y, 10)
     assert cost == pytest.approx(3.16, 0.01)
     # Expected gradients (approx) - first five values only
     assert np.allclose(

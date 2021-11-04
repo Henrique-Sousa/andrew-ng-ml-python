@@ -24,13 +24,13 @@ for lbda, ax in zip(lbdas, axes):
     maxiter = 400
     theta, J = lr.fit_with_regularization('BFGS', initial_theta, X, y, maxiter, lbda) 
 
-    u = np.linspace(-1, 1.5, 50).reshape([50, 1]);
-    v = np.linspace(-1, 1.5, 50).reshape([50, 1]);
+    u = np.linspace(-1, 1.5, 50).reshape([50, 1])
+    v = np.linspace(-1, 1.5, 50).reshape([50, 1])
 
-    z = np.zeros([len(u), len(v)]);
+    z = np.zeros([len(u), len(v)])
     for i in range(0, len(u)):
         for j in range(0, len(v)):
-            z[i, j] = dpp.map_feature(u[i], v[j], 6) @ theta;
+            z[i, j] = dpp.map_feature(u[i], v[j], 6) @ theta
 
     z = z.T
 

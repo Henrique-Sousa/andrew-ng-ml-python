@@ -8,7 +8,7 @@ y = mat['y']
 
 m = X.shape[0]
 
-rand_indices = np.random.permutation(m);
+rand_indices = np.random.permutation(m)
 sel = X[rand_indices[0:100], :]
 
-display_data(sel);
+display_data(sel)

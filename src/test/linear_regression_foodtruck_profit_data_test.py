@@ -30,7 +30,7 @@ def test_gradient_descent():
     initial_theta = np.zeros([2, 1])
     iterations = 1500
     alpha = 0.01
-    (theta, _) = gradient_descent(X, y, initial_theta, alpha, iterations);
+    (theta, _) = gradient_descent(X, y, initial_theta, alpha, iterations)
 
     assert theta[0] == pytest.approx(-3.6303, 0.001)
     assert theta[1] == pytest.approx(1.1664, 0.001)
