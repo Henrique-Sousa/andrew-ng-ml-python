@@ -2,8 +2,6 @@ import numpy as np
 import scipy.io
 from display_data import display_data
 
-num_labels = 10
-
 mat = scipy.io.loadmat('./data/ex3data1.mat')
 X = mat['X']
 y = mat['y']

@@ -22,7 +22,7 @@ for lbda, ax in zip(lbdas, axes):
     m, n = X.shape
     initial_theta = np.zeros([n, 1])
     maxiter = 400
-    theta, J = lr.fit_with_regularization(initial_theta, X, y, maxiter, lbda) 
+    theta, J = lr.fit_with_regularization('BFGS', initial_theta, X, y, maxiter, lbda) 
 
     u = np.linspace(-1, 1.5, 50).reshape([50, 1]);
     v = np.linspace(-1, 1.5, 50).reshape([50, 1]);

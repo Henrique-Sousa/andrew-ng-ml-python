@@ -61,7 +61,7 @@ def cost_function_with_regularization(theta, X, y, lbda):
     grad[1:] += (lbda / m) * theta[1:]
     return J, grad
 
-def fit_with_regularization(initial_theta, X, y, maxiter, lbda):
+def fit_with_regularization(method, initial_theta, X, y, maxiter, lbda):
     m, n = X.shape
     y = y.reshape(m)
     initial_theta = initial_theta.reshape(n)
@@ -69,7 +69,7 @@ def fit_with_regularization(initial_theta, X, y, maxiter, lbda):
         fun = cost_function_with_regularization,
         x0 = initial_theta,
         args = (X, y, lbda),
-        method = 'BFGS',
+        method = method,
         jac = True, 
         options = {'maxiter': maxiter})
     return (result.x.reshape(n, 1), result.fun)
@@ -82,8 +82,8 @@ def one_vs_all(X, y, num_labels, lbda):
     all_theta = np.zeros([num_labels, n + 1])
     for i in range(0, num_labels):
         y_i = (y == labels[i]).astype(np.int8)
-        theta, _ = fit_with_regularization(initial_theta, X, y_i, 400, lbda) 
-        print(f'Training regularized logistic regression classifier for label {i}')
+        theta, _ = fit_with_regularization('CG', initial_theta, X, y_i, 50, lbda) 
+        print(f'Training regularized logistic regression classifier for label {i + 1}')
         all_theta[i, :] = theta.reshape(n + 1)
     return all_theta
 
