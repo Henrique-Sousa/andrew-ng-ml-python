@@ -11,7 +11,7 @@ def display_data(X, example_width=None):
     display_rows = int(np.floor(np.sqrt(m)))
     display_cols = int(np.ceil(m / display_rows))
  
-    pad = 1
+    pad = 0
  
     display_array = - np.ones([
         int(pad + display_rows * (example_height + pad)),
