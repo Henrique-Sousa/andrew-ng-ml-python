@@ -2,6 +2,14 @@ import numpy as np
 from data_preprocessing import *
 from logistic_regression import sigmoid
 
+def sigmoid_gradient(z):
+    return sigmoid(z) * (1 - sigmoid(z))
+
+def rand_initialize_weights(L_in, L_out):
+    epsilon_init = 0.12
+    W = np.random.random([L_out, 1 + L_in]) * 2 * epsilon_init - epsilon_init
+    return W
+
 def nn_cost_function(nn_params,
                 input_layer_size,
                 hidden_layer_size,
@@ -53,9 +61,8 @@ def nn_cost_function(nn_params,
     # print(f'y_dummy.shape: {y_dummy.shape}')
     a3 = sigmoid(z3)
     J = (1/m) * np.sum(-y_dummy * np.log(a3) - (1 -y_dummy) * np.log(1 - a3))
-    
-    
-    ##
+    J += (lmbda / (2 * m)) * (np.sum(Theta1[:, 1:]**2) + np.sum(Theta2[:, 1:]**2))
+
     ## Part 2: Implement the backpropagation algorithm to compute the gradients
     ##         Theta1_grad and Theta2_grad. You should return the partial derivatives of
     ##         the cost function with respect to Theta1 and Theta2 in Theta1_grad and

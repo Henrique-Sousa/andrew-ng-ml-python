@@ -19,7 +19,15 @@ nn_params = np.block([Theta1.flatten(), Theta2.flatten()])
 
 def test_nn_cost_function():
     lmbda = 0
-
     J, _ = nn_cost_function(nn_params, input_layer_size, hidden_layer_size,
                        num_labels, X, y, lmbda)
     assert J == pytest.approx(0.287629, 0.000001)
+
+def test_nn_cost_function_with_regularization():
+    lmbda = 1;
+    J, _ = nn_cost_function(nn_params, input_layer_size, hidden_layer_size,
+                       num_labels, X, y, lmbda)
+    assert J == pytest.approx(0.383770, 0.000001)
+
+def test_sigmoid_gradient():
+    assert sigmoid_gradient(0) == 0.25
