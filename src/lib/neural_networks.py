@@ -68,19 +68,12 @@ def nn_cost_function(nn_params,
     Theta1_grad = (1 / m) * Delta1
     Theta2_grad = (1 / m) * Delta2
 
+    # 3: Implement regularization with the cost function and gradients.
+    Theta1_grad[:, 1:] += (lmbda / m) * Theta1[:, 1:]
+    Theta2_grad[:, 1:] += (lmbda / m) * Theta2[:, 1:]
+
     # Unroll gradients
     grad = np.block([Theta1_grad.flatten(order='F'), Theta2_grad.flatten(order='F')])
-
-    ## Part 3: Implement regularization with the cost function and gradients.
-    ##
-    ##         Hint: You can implement this around the code for
-    ##               backpropagation. That is, you can compute the gradients for
-    ##               the regularization separately and then add them to Theta1_grad
-    ##               and Theta2_grad from Part 2.
-    ##
-    #       
-    # You need to return the following variables correctly 
-    #J = 0
 
     return J, grad
 

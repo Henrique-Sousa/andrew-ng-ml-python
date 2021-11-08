@@ -32,8 +32,18 @@ def test_nn_cost_function_with_regularization():
 def test_sigmoid_gradient():
     assert sigmoid_gradient(0) == 0.25
 
-def test_check_nn_gradients(lmbda = 0):
+def test_backpropagation():
     grad, numgrad, diff = check_nn_gradients()
 
     assert np.allclose(numgrad, grad, atol=0.0001)
     assert diff <= 1e-9 
+
+def test_backpropagation_with_regularization():
+    lmbda = 3
+    grad, numgrad, diff = check_nn_gradients(lmbda)
+
+    assert np.allclose(numgrad, grad, atol=0.0001)
+    assert diff <= 1e-9 
+    debug_J, _ = nn_cost_function(nn_params, input_layer_size, hidden_layer_size,
+                       num_labels, X, y, lmbda)
+    assert debug_J == pytest.approx(0.576051, 0.000001)
